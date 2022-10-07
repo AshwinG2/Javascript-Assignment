@@ -1,0 +1,192 @@
+1.Run the following code & examine the output carefully: 
+ 
+for(var i=1 ; i<10 ; i++) 
+{ 
+    setTimeout(() => { 
+        console.log(i); 
+    }, 1000) 
+} 
+ 
+Refactor the code to produce the following output after 1 second: 
+1 
+2 
+3 
+4 
+5 
+6 
+7 
+8 
+9 
+10 
+--->
+setTimeout(() => { for(var i=1 ; i<=10; i++)
+    {
+        console.log(i);
+
+    }
+}, 1000)
+
+
+2.Write a JS function which accepts an array of 10 numbers. The function must return another array which contains only the odd numbers in the source array. 
+--->
+function myFunc(){
+    let arr = [9,12,13,14,15,16,17,18,19,10];
+    let arr1=[];
+    
+    for(let i=0; i<arr.length; i++){
+        if(arr[i]%2 != 0){
+             arr1.push(arr[i]);
+          }   
+    }
+    console.log(arr1);
+    }
+
+
+3.Refactor the JS function created in assignment 2 so that the user can pass the filter condition also to the function. For example, only even numbers, only prime numbers, etc. The condition must NOT be passed as a string. 
+--->
+function findingEven(numberAray){
+   
+    numberAray.forEach(element => {
+        {
+            if(Number(element) % 2 == 0){
+                console.log(element + " is even");
+            }
+        }
+    
+    }); 
+}
+
+function findingPrime(numberAray){
+    numberArayLength = Object.keys(numberAray).length
+    for (const number of numberAray) {
+        for (let i=2; i<numberArayLength; i++){
+            if(number == 1 ||number == 0){
+                console.log(number + ' is not a prime number')
+                break;
+            }
+
+            else if(number % i == 0){
+                console.log(number + " is not a prime number")
+                break;
+            }
+
+            else if(number % i !=0){
+                console.log( number + " is a prime number")
+                break;
+            }
+        }
+        
+
+}}
+let numberAray=[];
+let choice, totalNumbers;
+totalNumbers = prompt('enter the size of number you want to add in array')
+
+for(i=0; i < totalNumbers; i++){
+
+    numberAray[i] = prompt("enter "+ (i+1) +" number:")
+}
+console.log(numberAray)
+
+choice = Number(prompt("enter 1 for even number and 2 for odd number :"))
+
+if( choice == 1){
+    findingEven(numberAray)
+}
+
+if(choice == 2){
+    findingPrime(numberAray)
+}
+
+
+4.Consider the following scenario: 
+There are 3 functions, namely, GetVideo(), AddIntro() and AddSummary(). Each method returns a Promise. The Promise when resolved must return a string after 3 seconds like this: 
+GetVideo()        à returns Got Video 
+AddIntro()         à returns Intro Added 
+AddSummary() à returns Summary Added 
+ 
+Invoke the GetVideo() function. The final result must be displayed as: 
+Got Video, Intro Added, Summary Added 
+--->
+function getVideo(){
+    return new Promise(function(resolve, reject){
+        setTimeout(()=>{
+            if(getVideo()){
+                resolve("Got Video")
+            }else{
+                reject("Didn't got video")
+            }
+
+        },3000)
+    })
+}
+
+let methodForResolve = (result) => {
+    console.log("Message After Resolve= " +result);
+    }
+    let methodForReject = (reject) => {
+    console.log("Message After Reject = " + reject);
+    }
+
+function addIntro(){
+    return new Promise(function(resolve, reject){
+        setTimeout(()=>{
+            if(addIntro()){
+                resolve("Intro Added")
+            }else{
+                reject("Intro not added")
+            }
+
+        },3000);
+    })
+
+
+}
+
+function addSummery(){
+    return new Promise(function(resolve, reject){
+        setTimeout(()=>{
+            if(addSummery()){
+                resolve("Summery Added")
+            }else{
+                reject("Summery not added")
+            }
+
+        },3000);
+    })
+
+}
+
+getVideo().then(methodForResolve).catch(methodForReject);
+addIntro().then(methodForResolve).catch(methodForReject);
+addSummery().then(methodForResolve).catch(methodForReject);
+
+ 
+5.Rewrite the previous assignment using async and await keywords. 
+--->
+async function myFunction(){
+    function getVideo(){
+        console.log("got video");
+    }
+
+    function addIntro(){
+        return console.log("intro added");
+    }
+
+    function addSummary(){
+        return console.log("Summary Added");
+    }
+
+    getVideo();
+    await addIntro();
+    addSummary();
+}
+
+myFunction();
+console.log('checking the await function');
+
+ 
+
+ 
+
+
