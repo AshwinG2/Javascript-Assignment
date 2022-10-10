@@ -18,12 +18,16 @@ console.log(y);
 
 2.Write a JS arrow function which takes 2 numbers and returns their sum.
 --->
-function sum(x, y) {
-    return x + y;
-  }
 
-console.log(sum(5,10));
+// let sumoftwono = (no1, no2) => {
 
+//     const sum = no1 + no2;
+// }
+const no1 = parseInt(prompt('Enter a first Number >>>'));
+const no2 = parseInt(prompt('Enter a second Number >>>'));
+const sum = no1 + no2;
+
+console.log(sum);
 
 3.Write a standard JS function which takes variable number of arguments and prints each argument on the screen and also the number of arguments passed.
 --->
